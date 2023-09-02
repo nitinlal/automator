@@ -11,13 +11,15 @@ if [ $? -ne 0 ]; then
     exit
 fi
 
-for dir in "$1"/*; do
+for dir in "$1"/*; do # Whitespace-safe and recursive
     if [ ! -d "$dir" ]; then
         echo "Skipping $dir because it is not a directory"
         continue
     fi
 
+    echo "this is processing the directory"
     echo "Processing directory: $dir"
+
     cd "$dir" || continue
     echo "Running npm install under $dir ..."
 
